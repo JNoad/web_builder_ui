@@ -1,6 +1,6 @@
 <template>
     <div class="side-bar-container">
-        
+
     </div>
 </template>
 <script>
