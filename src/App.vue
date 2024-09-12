@@ -63,7 +63,7 @@ nav a.router-link-exact-active {
     grid-template-columns: auto 1fr auto auto auto;
     grid-template-rows: auto auto auto 1fr;
 
-    div {
+    > div {
         border: 1px solid lime;
         // width: 100%; height: 100%;
         overflow: hidden;
