@@ -1,13 +1,20 @@
 <template>
     <div class="side-bar-container">
         <ul>
-            <li><router-link to="/">Home</router-link></li>
+            <li>
+                <router-link to="/">
+                    <span class="material-symbols-outlined" :style="`color: #565656;`">
+                        home
+                    </span>
+                    Home
+            
+                </router-link></li>
             <li>
                 <FolderDropDown href="/projects">
-                    myProjects
+                    My Projects
                     <template #list>
                         <li>
-                            <FolderDropDown>
+                            <FolderDropDown colour="crimson">
                                 hi
                                 <template #list>
                                     <li>Item</li>
@@ -18,8 +25,16 @@
                     </template>
                 </FolderDropDown>
             </li>
-            <li><router-link to="github">GitHub</router-link></li>
-            <li><router-link to="hosted">Hosted</router-link></li>
+            <li><router-link to="github">
+                <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/565656/github.png" alt="github"/>
+                GitHub
+            </router-link></li>
+            <li><router-link to="hosted">
+                <span class="material-symbols-outlined" :style="`color: #565656;`">
+                    smb_share
+                </span>
+                Hosted
+            </router-link></li>
         </ul>
         <ul>
             <li>
@@ -44,13 +59,13 @@ export default {
 </script>
 <style lang="scss">
     .side-bar-container {
-        width: 300px; height: 100%;
+        width: 250px; height: 100%;
         border: 2px solid black !important;
         > ul {
             margin: 16px auto;
             li {
                 width: 100%; 
-                margin: 4px; padding: 4px 8px;
+                margin: 4px; padding: 4px 24px;
                 border-radius: 16px;
                 background-color: #eee;
                 text-align: left;
@@ -58,6 +73,11 @@ export default {
             }
             a {
                 text-decoration: none;
+                display: flex;
+                align-items: center;
+                img, span {
+                    margin-right: 4px;
+                }
             }
         }
     }

@@ -1,19 +1,22 @@
 <template>
     <div class="folder">
         <div class="folder-head">
-            <span @click="dropDown()" class="clickable dropdown-icon">
-                <input type="checkbox">
-            </span>
-            <span class="material-symbols-outlined folder-icon">
-                folder
+            <span class="clickable dropdown-icon">
+                <input type="checkbox" v-model="folderOpen">
             </span>
             <router-link to="/my-projects">
+                <span v-if="folderOpen" class="material-symbols-outlined" :style="`color: ${colour ? colour : '#565656'};`">
+                    folder_open
+                </span>
+                <span v-else class="material-symbols-outlined folder-icon" :style="`color: ${colour ? colour : '#565656'};`">
+                    folder
+                </span>
                 <slot>
                         
                 </slot>
             </router-link>
         </div>
-        <div ref="dropdown" class="dropdown-closed dropdown my-projects-dropdown">
+        <div ref="dropdown" class="dropdown my-projects-dropdown" :class="{'dropdown-closed': !folderOpen}">
             <ul>
                 <slot name="list">
                     
@@ -24,10 +27,10 @@
 </template>
 <script>
 export default {
-    methods: {
-        dropDown(selector) {
-            const el = this.$refs.dropdown
-            el.classList.toggle('dropdown-closed');
+    props: ['colour'],
+    data() {
+        return {
+            folderOpen: false
         }
     },
 }
@@ -39,6 +42,7 @@ export default {
     .folder {
         .folder-head {
             display: flex; align-items: center;
+            position: relative; left: -16px;
             .dropdown-icon {
                 display: inline-block;
                 background-image: url(https://img.icons8.com/material-sharp/16/sort-down.png);
@@ -53,9 +57,14 @@ export default {
                     opacity: 0;
                 }
             }
+            a {
+                display: flex;
+                align-items: center;
+            }
             .folder-icon {
                 $size: 24px;
                 width: $size; height: $size;
+
             }
         }
         .dropdown {
