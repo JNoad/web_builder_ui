@@ -1,0 +1,72 @@
+<template>
+    <div class="create-btn">
+        <button @click="toggleMenu">
+            <span class="material-symbols-outlined">
+                add
+            </span>
+            Create
+        </button>
+        
+        <div class="create-menu" :class="{hidden: !menuOpen}">
+            <div>New Folder</div>
+            <div>New Project</div>
+            <div>New File</div>
+        </div>
+    </div>
+</template>
+<script>
+export default {
+    data() {
+        return {
+            menuOpen: false
+        }
+    },
+    methods: {
+        toggleMenu() {
+            this.menuOpen = !this.menuOpen;
+        },
+        close (e) {
+            if (!this.$el.contains(e.target) && this.menuOpen) {
+                this.toggleMenu();
+            }
+        }
+    },
+    mounted () {
+        document.addEventListener('click', this.close)
+    },
+}
+</script>
+<style lang="scss">
+.create-btn {
+    padding: 16px;
+    position: relative;
+    overflow: visible !important;
+    button {
+        padding: 16px;
+        display: flex; align-items: center;
+        border: none; border-radius: 16px;
+        font-size: 16px;
+        box-shadow: 0 0 6px -2px rgba(0, 0, 0, 0.5), 0 4px 2px -2px rgba(0, 0, 0, 0.5);
+        span {
+            margin-right: 4px;
+        }
+        &:active {
+            box-shadow: inset 0 0 6px -2px rgba(0, 0, 0, 0.5), inset 0 4px 2px -2px rgba(0, 0, 0, 0.5);
+        }
+    }
+    .create-menu {
+        width: 350px; height: 250px;
+        background-color: white;
+        box-shadow: 0 0 4px -2px rgba(0, 0, 0, 0.5);
+        @include absolute;
+        @include flex-column($align: start);
+        z-index: 2;
+        transition: all 0.25s ease-in-out; 
+        border-radius: 16px;
+        > * {
+            padding: 4px 12px;
+            cursor: pointer;
+        }
+    }
+}
+</style>

@@ -1,8 +1,7 @@
 <template>
-        <div class="layout-grid">
+    <div class="layout-grid">
         <div>1</div>
-        <div>2</div>
-        <!-- <div>3</div> -->
+        <CreateButton/>
         <SideBar/>
         <div>
             <router-view />
@@ -14,10 +13,12 @@
 
 <script>
 import SideBar from '@/components/SideBar.vue';
+import CreateButton from './components/CreateButton.vue';
 
 export default {
     components: {
-        SideBar
+        SideBar,
+        CreateButton
     }
     
 }
@@ -63,7 +64,7 @@ nav a.router-link-exact-active {
     grid-template-columns: auto 1fr auto auto auto;
     grid-template-rows: auto auto auto 1fr;
 
-    > div {
+    > * {
         border: 1px solid lime;
         // width: 100%; height: 100%;
         overflow: hidden;
@@ -83,5 +84,10 @@ nav a.router-link-exact-active {
             grid-area: rightBar;
         }
     }
+    .hidden {
+        display: opacity 0;
+        height: 0; overflow: hidden;
+        padding: 0;
+    } 
 }
 </style>

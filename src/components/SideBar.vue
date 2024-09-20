@@ -60,11 +60,11 @@ export default {
 <style lang="scss">
     .side-bar-container {
         width: 250px; height: 100%;
-        border: 2px solid black !important;
         > ul {
             margin: 16px auto;
+            padding: 0 16px 0 4px;
             li {
-                width: 100%; 
+                width: 100%;
                 margin: 4px; padding: 4px 24px;
                 border-radius: 16px;
                 background-color: #eee;
