@@ -1,16 +1,24 @@
 <template>
-    
+    <div id="home">
+        <h2>Home</h2>
+    </div>
 </template>
 <script>
-import SideBar from '@/components/SideBar.vue';
 
 export default {
     components: {
-        SideBar
+        
     }
     
 }
 </script>
 <style lang="scss">
-
+    #home {
+        height: 100%;
+        text-align: left;
+        padding: 16px;
+        border-radius: 16px 16px 0 0;
+        background-color: #fff;
+        font-family: sans-serif;
+    }
 </style>
