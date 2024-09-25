@@ -1,6 +1,6 @@
 <template>
     <div class="layout-grid">
-        <div>1</div>
+        <Header/>
         <CreateButton/>
         <SideBar/>
         <div>
@@ -12,11 +12,13 @@
 </template>
 
 <script>
+import Header from '@/components/Header.vue';
 import SideBar from '@/components/SideBar.vue';
 import CreateButton from './components/CreateButton.vue';
 
 export default {
     components: {
+        Header,
         SideBar,
         CreateButton
     }
@@ -28,6 +30,7 @@ export default {
 *, ::before, ::after {
     margin: 0; padding: 0;
     box-sizing: border-box;
+    text-align: start;
 }
 
 #app {
@@ -37,7 +40,7 @@ export default {
     text-align: center;
     color: #2c3e50;
     overflow: hidden;
-    background-color: #eee;
+    background-color: #f8f8f8;
 }
 
 nav {
@@ -66,7 +69,7 @@ nav a.router-link-exact-active {
     grid-template-rows: auto auto auto 1fr;
 
     > * {
-        border: 1px solid lime;
+        // border: 1px solid lime;
         // width: 100%; height: 100%;
         overflow: hidden;
         &:nth-child(1) {

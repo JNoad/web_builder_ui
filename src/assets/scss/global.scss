@@ -8,6 +8,12 @@
     right: $right;
 }
 
+@mixin flex-row ($justify: start, $align: center) {
+    display: flex; flex-direction: row;
+    justify-content: $justify;
+    align-items: $align;
+}
+
 @mixin flex-column ($justify: start, $align: center) {
     display: flex; flex-direction: column;
     justify-content: $justify;

@@ -67,7 +67,7 @@ export default {
                 width: 100%;
                 margin: 4px; padding: 4px 24px;
                 border-radius: 16px;
-                background-color: #eee;
+                // background-color: #eee;
                 text-align: left;
                 list-style: none;
             }

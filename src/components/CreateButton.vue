@@ -48,11 +48,15 @@ export default {
         font-size: 16px;
         box-shadow: 0 0 6px -2px rgba(0, 0, 0, 0.5), 0 4px 2px -2px rgba(0, 0, 0, 0.5);
         background-color: #fff;
+        cursor: pointer;
         span {
             margin-right: 4px;
         }
         &:active {
             box-shadow: inset 0 0 6px -2px rgba(0, 0, 0, 0.5), inset 0 4px 2px -2px rgba(0, 0, 0, 0.5);
+        }
+        &:hover {
+            background-color: mix(#fff, #ccf, 50%);
         }
     }
     .create-menu {
