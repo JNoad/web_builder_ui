@@ -1,65 +1,74 @@
 <template>
     <div id="home">
-        <h2>Home</h2>
-        <table>
-            <tr>
-                <th>Name</th>
-                <th>Owner</th>
-                <th>Last Modified</th>
-                <th>File Size</th>
-                <th>:</th>
-            </tr>
-            <FolderListItem v-for="repo in repos" :key="repo.name"
-                :folderName="repo.name"
-                :owner="repo.owner.login"
-                :updatedAt="repo.updated_at"
-                :size="repo.size"
-                folderColour="crimson"
-            />
-        </table>
+        <div class="layout-grid">
+        <Header/>
+        <CreateButton/>
+        <SideBar/>
+        <Content/>
+        <div>5</div>
+    </div>
     </div>
 </template>
+
 <script>
-import axios from 'axios';
-import FolderListItem from '@/components/FolderListItem.vue';
+import Header from '@/widgets/Header.vue';
+import CreateButton from '@/widgets/CreateButton.vue';
+import SideBar from '@/widgets/SideBar.vue';
+import Content from '@/widgets/Content.vue';
 
 export default {
     components: {
-        FolderListItem
-    },
-    computed: {
-        repos() {
-            return this.$store.state.repos
-        }
-    },
-    async mounted() {
-        this.$store.dispatch('getRepos');
-    }    
+        Header,
+        SideBar,
+        CreateButton,
+        Content
+    }
+    
 }
 </script>
+
 <style lang="scss">
     #home {
-        height: 100%;
-        text-align: left;
-        padding: 16px;
-        border-radius: 16px 16px 0 0;
-        background-color: #fff;
-        font-family: sans-serif;
+        width: 100%; height: 100%;
+        
+        .layout-grid {
+            width: 100vw; height: 100vh;
+            overflow: hidden;
+            display: grid;
+            grid-template-areas:
+                "header header header header header"
+                "newb mainContent mainContent mainContent rightBar"
+                "leftBar mainContent mainContent mainContent rightBar"
+                "leftBar mainContent mainContent mainContent rightBar";
+            grid-template-columns: auto 1fr auto auto auto;
+            grid-template-rows: auto auto auto 1fr;
 
-        h2 {
-            margin-bottom: 16px;
+            > * {
+                // border: 1px solid lime;
+                // width: 100%; height: 100%;
+                overflow: hidden;
+                &:nth-child(1) {
+                    grid-area: header;
+                }
+                &:nth-child(2) {
+                    grid-area: newb;
+                }
+                &:nth-child(3) {
+                    grid-area: leftBar;
+                }
+                &:nth-child(4) {
+                    grid-area: mainContent;
+                }
+                &:nth-child(5) {
+                    grid-area: rightBar;
+                }
+            }
+            .hidden {
+                display: opacity 0;
+                height: 0; overflow: hidden;
+                padding: 0;
+            } 
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            tr {
-                width: 100%;
-                border-bottom: 0.5px solid #33333388;
-                th, td {
-                    padding: 8px 4px;
-                }    
-            }
-        } 
     }
 </style>

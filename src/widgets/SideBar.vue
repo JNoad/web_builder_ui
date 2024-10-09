@@ -51,7 +51,7 @@
     </div>
 </template>
 <script>
-import FolderDropDown from './FolderDropDown.vue';
+import FolderDropDown from '@/components/FolderDropDown.vue';
 export default {
     components: {
         FolderDropDown
