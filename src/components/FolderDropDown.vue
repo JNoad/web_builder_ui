@@ -4,13 +4,15 @@
             <span class="clickable dropdown-icon">
                 <input type="checkbox" v-model="folderOpen">
             </span>
-            <router-link to="/my-projects">
-                <span v-if="folderOpen" class="material-symbols-outlined" :style="`color: ${colour ? colour : '#565656'};`">
-                    folder_open
-                </span>
-                <span v-else class="material-symbols-outlined folder-icon" :style="`color: ${colour ? colour : '#565656'};`">
-                    folder
-                </span>
+            <router-link :to="href">
+                <slot name="icon">
+                    <span v-if="folderOpen" class="material-symbols-outlined" :style="`color: ${colour ? colour : '#565656'};`">
+                        folder_open
+                    </span>
+                    <span v-else class="material-symbols-outlined folder-icon" :style="`color: ${colour ? colour : '#565656'};`">
+                        folder
+                    </span>
+                </slot>
                 <slot>
                         
                 </slot>
@@ -27,7 +29,7 @@
 </template>
 <script>
 export default {
-    props: ['colour'],
+    props: ['colour', 'href'],
     data() {
         return {
             folderOpen: false
@@ -50,6 +52,7 @@ export default {
                 transform: rotate(-90deg); transition: all 0.2s ease;
                 $size: 16px;
                 width: $size; height: $size +  6;
+                scale: 75%;
                 &:has(input:checked){
                     transform: rotate(0deg);
                 }
@@ -60,6 +63,8 @@ export default {
             a {
                 display: flex;
                 align-items: center;
+                color: #222;
+                text-decoration: none;
             }
             .folder-icon {
                 $size: 24px;

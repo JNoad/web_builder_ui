@@ -8,33 +8,34 @@
                     </span>
                     Home
             
-                </router-link></li>
+                </router-link>
+            </li>
             <li>
-                <FolderDropDown href="/projects">
-                    My Projects
+                <FolderDropDown href="/github">
+                    <template #icon>
+                        <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/565656/github.png" alt="github"/>
+                    </template>
+                    GitHub
                     <template #list>
                         <li>
-                            <FolderDropDown colour="crimson">
-                                hi
-                                <template #list>
-                                    <li>Item</li>
-                                </template>
+                            <FolderDropDown v-for="repo in repos" :key="repo.name">
+                                {{ repo.name }}
                             </FolderDropDown>
                         </li>
-                        <li>Bye</li>
                     </template>
                 </FolderDropDown>
             </li>
-            <li><router-link to="github">
-                <img width="24" height="24" src="https://img.icons8.com/material-outlined/24/565656/github.png" alt="github"/>
-                GitHub
-            </router-link></li>
-            <li><router-link to="hosted">
-                <span class="material-symbols-outlined" :style="`color: #565656;`">
-                    smb_share
-                </span>
-                Hosted
-            </router-link></li>
+            <li>
+                <FolderDropDown href="/g-drive">
+                    <template #icon>
+                        <img width="24" height="24" src="https://img.icons8.com/ios/24/google-drive--v3.png" alt="google-drive--v3"/>
+                    </template>
+                    Google Drive
+                    <template #list>
+                        
+                    </template>
+                </FolderDropDown>
+            </li>
         </ul>
         <ul>
             <li>
@@ -55,6 +56,11 @@ export default {
     components: {
         FolderDropDown
     },
+    computed: {
+        repos() {
+            return this.$store.state.repos
+        }
+    }
 }
 </script>
 <style lang="scss">
@@ -75,6 +81,7 @@ export default {
                 text-decoration: none;
                 display: flex;
                 align-items: center;
+                color: #222;
                 img, span {
                     margin-right: 4px;
                 }

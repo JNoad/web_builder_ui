@@ -5,8 +5,8 @@
             <span>Engine</span>
         </div>
         <SearchBar/>
-        <div>
-            
+        <div class="options">
+            <button @click="signInWithGitHub">Sign in with GitHub</button>
         </div>
     </header>
 </template>
@@ -15,7 +15,13 @@ import SearchBar from './SearchBar.vue';
 export default {
     components: {
         SearchBar
-    }
+    },
+    methods: {
+        signInWithGitHub() {
+            // Redirect the user to the backend OAuth route
+            window.location.href = "http://localhost:3000/github/auth";
+        }
+    },
 }
 </script>
 <style lang="scss">
@@ -31,6 +37,10 @@ export default {
                 font-size: large;
                 margin: 0 8px;
             }
+        }
+        .options {
+            position: absolute;
+            right: 24px;
         }
     }
 </style>
