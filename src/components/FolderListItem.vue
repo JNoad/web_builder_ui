@@ -1,5 +1,5 @@
 <template>
-    <tr>
+    <tr @click="openRepo()">
         <td>
             <div>
                 <span class="material-symbols-outlined folder-icon" :style="`color: ${folderColour ? folderColour : '#565656'};`">
@@ -17,7 +17,11 @@
 <script>
 export default {
     props: ['folderName', 'owner', 'updatedAt', 'size', 'folderColour'],
-
+    methods: {
+        openRepo() {
+            this.$store.dispatch('fetchRepoContents', {owner: this.owner, repo: this.folderName})
+        }
+    }
 }
 </script>
 <style lang="scss" scoped>
