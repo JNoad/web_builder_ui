@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import Header from '@/components/Header.vue';
-import SideBar from '@/components/SideBar.vue';
+import Header from '@/widgets/Header.vue';
+import SideBar from '@/widgets/SideBar.vue';
 import CreateButton from './components/CreateButton.vue';
 
 export default {
