@@ -53,5 +53,16 @@ export default createStore({
               console.error('Error fetching repo contents:', error);
             }
         },
+
+        async createProject(context, data){
+            try {
+                console.log('Submitting...', data);
+                const res = await axios.post('http://localhost:3000/frontend', data );
+                context.commit('msg', res.data);
+                console.log('Submited!');
+            } catch (error) {
+                console.error('Error creating repo:', error);
+            }
+        },
     },
 })
