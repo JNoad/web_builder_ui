@@ -8,14 +8,20 @@
         </button>
         
         <div class="create-menu" :class="{hidden: !menuOpen}">
-            <div>New Folder</div>
-            <div>New Project</div>
-            <div>New File</div>
+            <Modal title="New Folder"/>
+            <Modal title="New Project"/>
+            <Modal title="New File"/>
         </div>
+
+
     </div>
 </template>
 <script>
+import Modal from '@/components/Modal.vue';
 export default {
+    components: {
+        Modal
+    },
     data() {
         return {
             menuOpen: false
@@ -29,7 +35,16 @@ export default {
             if (!this.$el.contains(e.target) && this.menuOpen) {
                 this.toggleMenu();
             }
-        }
+        },
+        newFolder() {
+
+        },
+        newProject() {
+
+        },
+        newFile() {
+
+        },
     },
     mounted () {
         document.addEventListener('click', this.close)
@@ -63,7 +78,7 @@ export default {
         width: 350px; height: 250px;
         background-color: white;
         box-shadow: 0 0 4px -2px rgba(0, 0, 0, 0.5);
-        @include absolute;
+        @include positioning(absolute);
         @include flex-column($align: start);
         z-index: 2;
         transition: all 0.25s ease-in-out; 
