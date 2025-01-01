@@ -35,6 +35,8 @@
                     </label>
                 </div>
 
+                <h3>{{ msg }}</h3>
+
                 <button type="submit">Submit</button>
             </form>
             
@@ -46,7 +48,7 @@ export default {
     props: ['title'],
     data() {
         return {
-            open: true,
+            open: false,
             projectTitle: ''
         }
     },
@@ -59,6 +61,11 @@ export default {
             console.log('Attempting to submit...');
             
             this.$store.dispatch('createProject', {title: this.projectTitle})
+        }
+    },
+    computed: {
+        msg() {
+            return this.$store.state.msg
         }
     }
 }
