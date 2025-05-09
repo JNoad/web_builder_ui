@@ -1,6 +1,14 @@
 @import "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200";
 
-@mixin positioning($position: static, $top: 0, $left: 0, $bottom: auto, $right: auto) {
+@mixin sizing($box-sizing: border-box, $width: 0, $height: 0, $margin: 0, $padding: 0) {
+    box-sizing: $box-sizing;
+    width: $width;
+    height: $height;
+    margin: $margin;
+    padding: $padding;
+}
+
+@mixin positioning($position: static, $top: auto, $left: auto, $bottom: auto, $right: auto) {
     position: $position;
     top: $top; 
     left: $left;
