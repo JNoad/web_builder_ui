@@ -1,5 +1,8 @@
-import { createStore } from 'vuex'
-import axios from 'axios'
+import { createStore } from 'vuex';
+import axios from 'axios';
+import { io } from "socket.io-client";
+
+const socket = io('ws://localhost:3000');
 
 export default createStore({
     state: {
@@ -60,6 +63,16 @@ export default createStore({
                 const res = await axios.post('http://localhost:3000/frontend', data );
                 context.commit('msg', res.data);
                 console.log('Submited!');
+            } catch (error) {
+                console.error('Error creating repo:', error);
+            }
+        },
+
+        async terminalCommand(context, data){
+            try {
+                console.log('Emmitting: ' + data);
+                
+                socket.emit('terminal', data)
             } catch (error) {
                 console.error('Error creating repo:', error);
             }
