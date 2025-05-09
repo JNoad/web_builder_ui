@@ -2,20 +2,22 @@
     <div id="main-content">
         <h2>Home</h2>
         <table>
-            <tr>
-                <th>Name</th>
-                <th>Owner</th>
-                <th>Last Modified</th>
-                <th>File Size</th>
-                <th>:</th>
-            </tr>
-            <FolderListItem v-for="repo in repos" :key="repo.name"
-                :folderName="repo.name"
-                :owner="repo.owner.login"
-                :updatedAt="repo.updated_at"
-                :size="repo.size"
-                folderColour="crimson"
-            />
+            <tbody>
+                <tr>
+                    <th>Name</th>
+                    <th>Owner</th>
+                    <th>Last Modified</th>
+                    <th>File Size</th>
+                    <th>:</th>
+                </tr>
+                <FolderListItem v-for="repo in repos" :key="repo.name"
+                    :folderName="repo.name"
+                    :owner="repo.owner.login"
+                    :updatedAt="repo.updated_at"
+                    :size="repo.size"
+                    folderColour="crimson"
+                />
+            </tbody>
         </table>
     </div>
 </template>

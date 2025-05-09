@@ -22,7 +22,7 @@
                 </div>
 
                 <div>
-                    Select frontend/UI framework:
+                    Select backend/API framework:
                     <br>
                     <label>
                         <input type="radio" name="api" value="">
@@ -40,12 +40,17 @@
                 <button type="submit">Submit</button>
             </form>
             
+            <Terminal />
         </div>
     </div>
 </template>
 <script>
+import Terminal from './Terminal.vue';
 export default {
     props: ['title'],
+    components: {
+        Terminal
+    },
     data() {
         return {
             open: false,
@@ -58,9 +63,9 @@ export default {
         },
         submitProject(e) {
             e.preventDefault();
-            console.log('Attempting to submit...');
             
-            this.$store.dispatch('createProject', {title: this.projectTitle})
+            // this.$store.dispatch('createProject', {title: this.projectTitle})
+            this.$store.dispatch('terminalCommand', this.projectTitle)
         }
     },
     computed: {
@@ -72,7 +77,7 @@ export default {
 </script>
 <style lang="scss">
     #modal {
-        @include positioning(fixed);
+        @include positioning(fixed, 0, 0);
         width: 100%; height: 100%;
         z-index: 10;
         background-color: rgba(0, 0, 0, 0.5);
@@ -81,7 +86,6 @@ export default {
             width: 650px; height: 500px;
             background-color: #fff;
             border-radius: 16px;
-            
             @include positioning(absolute, 0, 0, 0, 0);
             margin: auto; padding: 16px;
             box-shadow: 0 0 12px -4px black;
