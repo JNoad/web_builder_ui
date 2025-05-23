@@ -58,7 +58,7 @@ export default {
     },
     computed: {
         repos() {
-            return this.$store.state.repos
+            // return this.$store.state.repos
         }
     }
 }

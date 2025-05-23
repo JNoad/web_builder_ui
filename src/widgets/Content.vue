@@ -31,11 +31,11 @@ export default {
     },
     computed: {
         repos() {
-            return this.$store.state.repos
+            // return this.$store.state.repos
         }
     },
     async mounted() {
-        this.$store.dispatch('getRepos');
+        // this.$store.dispatch('getRepos');
     }    
 }
 </script>
