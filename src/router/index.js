@@ -12,6 +12,11 @@ const routes = [
     name: 'editor',
     component: () => import(/* webpackChunkName: "about" */ '../views/EditorView.vue')
   },
+  {
+    path: '/loading',
+    name: 'loading',
+    component: () => import(/* webpackChunkName: "about" */ '../views/LoadingView.vue')
+  },
 ]
 
 const router = createRouter({
