@@ -1,8 +1,7 @@
 <template>
     <div id="editor-window" @mouseup="loadComponent( { compType: 'component', compName: 'DropDown', content: '<button>hi</button>', props: {title: 'hello'} } )">
-        <div id="app">
-            <component :is="comp.name" v-for="comp in components" v-bind="comp.props" v-html="comp.content"/>
-        </div>
+        <iframe :src="this.$route.query.url"></iframe>
+        <!-- <component :is="comp.name" v-for="comp in components" v-bind="comp.props" v-html="comp.content"/> -->
     </div>
 </template>
 <script>
@@ -23,8 +22,12 @@ export default {
 </script>
 <style lang="scss">
     #editor-window {
-        @include sizing($width: 100vw, $height: 100vh);
+        @include sizing($w: 100vw, $h: 100vh);
         border: 4px solid red;
         overflow: hidden;
+        iframe {
+            @include sizing($w: 100%, $h: 100%);
+            overflow: hidden;
+        }
     }
 </style>

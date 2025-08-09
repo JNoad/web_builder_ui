@@ -1,7 +1,7 @@
 <template>
     <div id="editor-menu" ref="editorMenu">
         <div class="editor-menu-icon" ref="editorMenuIcon" @click="toggleMenu" @mousedown="activateDrag"></div>
-        <div class="menu-list" ref="menuList">
+        <div class="menu-list hidden" ref="menuList">
             <DropDown title="Settings">
                 Hi there
             </DropDown>
@@ -70,10 +70,10 @@ export default {
     #editor-menu {
         $size: 50px;
         @include positioning(absolute);
-        @include sizing($width: $size, $height: $size);
+        @include sizing($w: $size, $h: $size);
         .editor-menu-icon {
             @include positioning(absolute, 0, 0, 0, 0);
-            @include sizing($width: $size, $height: $size);
+            @include sizing($w: $size, $h: $size);
             z-index: 2;
             background-color: white;
             background-image: url(https://img.icons8.com/ios-glyphs/60/menu--v3.png);
@@ -83,7 +83,7 @@ export default {
         }
         .menu-list {
             @include positioning(absolute, 50%, 5%);
-            @include sizing($width: 250px, $height: 400px, $padding: (0.5*$size) 0 0 5px);
+            @include sizing($w: 250px, $h: 400px, $p: (0.5*$size) 0 0 5px);
             z-index: 1;
             background-color: white;
             box-shadow: 0 0 4px black;
