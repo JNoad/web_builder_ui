@@ -28,20 +28,20 @@ export default {
             }
         }
     },
-    // mounted() {
-    //     // Connect to the backend socket
-    //     this.socket = io("ws://localhost:3000");
+    mounted() {
+        // // Connect to the backend socket
+        // this.socket = io("ws://localhost:3000");
 
-    //     // Listen for command output from the backend
-    //     this.socket.on("terminalData", (data) => {
-    //         this.output.push(data); // Append data to the terminal output
-    //     });
+        // // Listen for command output from the backend
+        // this.socket.on("terminalData", (data) => {
+        //     this.output.push(data); // Append data to the terminal output
+        // });
 
-    //     // Listen for process completion
-    //     this.socket.on("command-done", (message) => {
-    //         this.output.push(message); // Notify when command is done
-    //     });
-    // },
+        // // Listen for process completion
+        // this.socket.on("command-done", (message) => {
+        //     this.output.push(message); // Notify when command is done
+        // });
+    },
 }
 </script>
 

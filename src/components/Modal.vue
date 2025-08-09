@@ -45,6 +45,7 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
 import Terminal from './Terminal.vue';
 export default {
     props: ['title'],
@@ -61,11 +62,10 @@ export default {
         toggleModal() {
             this.open = !this.open
         },
-        submitProject(e) {
+        async submitProject(e) {
             e.preventDefault();
-            
-            // this.$store.dispatch('createProject', {title: this.projectTitle})
-            this.$store.dispatch('terminalCommand', this.projectTitle)
+            console.log(this.projectTitle)
+            this.$router.push({ name: 'loading', query: { projectTitle: this.projectTitle } });
         }
     },
     computed: {
