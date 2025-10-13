@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import path from 'path'
+import fs from 'fs/promises'
 import express from 'express'
 import { spawn } from 'child_process'
 // import { create } from './src/router/request'
@@ -46,7 +47,7 @@ export default defineConfig({
                         // 2) install
                         const install = spawn(
                             'npm',
-                            ['install'],
+                            ['install', 'sass'],
                             {
                                 cwd: projectPath,
                                 shell: true,
@@ -54,13 +55,27 @@ export default defineConfig({
                             }
                         )
 
-                        install.on('exit', (code) => {
+                        install.on('exit', async (code) => {
                             if (code !== 0) {
                                 res.statusCode = 500
                                 return res.end('install failed')
                             }
 
                             const projectPath = path.join(projectsPath, projectName)
+                            
+                            await fs.rm(path.join(projectPath, 'vite.config.js'), { recursive: true, force: true });
+                            await fs.cp(
+                                path.join(__dirname, 'templates/apps/ecommerce/vite.config.js'),
+                                path.join(projectPath, 'vite.config.js'),
+                                { recursive: true }
+                            );
+
+                            await fs.rm(path.join(projectPath, 'src'), { recursive: true, force: true });
+                            await fs.cp(
+                                path.join(__dirname, 'templates/apps/ecommerce/src'),
+                                path.join(projectPath, 'src'),
+                                { recursive: true }
+                            );
 
                             // 3) start dev & capture URL
                             const dev = spawn(

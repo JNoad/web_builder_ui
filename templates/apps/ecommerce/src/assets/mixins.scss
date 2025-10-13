@@ -1,0 +1,13 @@
+@mixin sizing($type: 1, $width: 100vw, $height: 100vh) {
+    @if $type == 'custom' or $type == 'cust' or $type == 0 {
+        width: $width; height: $height;
+    } @else if $type == 'fullview' or $type == "fv" or $type == 1 {
+        width: 100vw; height: 100vh;
+    } @else if $type == 'full' or $type == "f" or $type == 2 {
+        width: 100%; height: 100%;
+    } @else if $type == 'fullwidth' or $type == "fw" or $type == 3 {
+        width: 100%;
+    } @else if $type == 'fullheight' or $type == "fh" or $type == 4 {
+        height: 100%;
+    }
+}

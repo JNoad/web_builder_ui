@@ -1,0 +1,31 @@
+@import './base.scss';
+@import './mixins.scss';
+
+#app {
+    @include sizing();
+    overflow: hidden;
+}
+
+a,
+.green {
+    text-decoration: none;
+    color: $colorSec;
+    transition: 0.4s;
+    padding: 3px;
+}
+
+@media (hover: hover) {
+    a:hover {
+        background-color: hsla(160, 100%, 37%, 0.2);
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        display: flex;
+        place-items: center;
+    }
+
+}
+$color: red;
+
