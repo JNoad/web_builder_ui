@@ -21,6 +21,12 @@ export default {
 }
 </script>
 <style lang="scss">
+    #editor-window, #editor-window > * {
+        all: unset;
+        /* You may need to manually re-apply essential display properties */
+        display: block; 
+        box-sizing: border-box; /* Optional: ensures padding/border included in width calculation */
+    }
     #editor-window {
         @include sizing($w: 100vw, $h: 100vh);
         border: 4px solid red;

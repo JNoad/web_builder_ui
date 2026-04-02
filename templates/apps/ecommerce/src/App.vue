@@ -3,7 +3,8 @@
         <NavBar/>
     </header>
     <main>
-        <router-view></router-view>
+        <!-- <router-view></router-view> -->
+        <EditorView/>
     </main>
     <footer>
         
@@ -11,6 +12,7 @@
 </template>
 <script>
 import NavBar from './components/NavBar.vue';
+import EditorView from './views/Editor'
 export default {
     components: {
         NavBar

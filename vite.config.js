@@ -21,7 +21,7 @@ export default defineConfig({
                 server.middlewares.use('/create', (req, res, next) => {
                     if (req.method !== 'POST') return next()
                     let { projectName, flags = ['--router', '--pinia']  } = req.body
-                    console.log(req.body, flags);
+                    // console.log(req.body, flags);
 
                     // 1) scaffold
                     const create = spawn(
@@ -35,7 +35,7 @@ export default defineConfig({
                     )
                     
                     create.on('exit', (code) => {
-                        console.log(code);
+                        // console.log(code);
                         
                         if (code !== 0) {
                             res.statusCode = 500
@@ -91,7 +91,7 @@ export default defineConfig({
                             // Handler for stdout data
                             const onStdout = data => {
                                 let text = data.toString()
-                                console.log('[dev stdout]', text)
+                                // console.log('[dev stdout]', text)
                                 text = text.replace(/\x1B\[[0-9;]*m/g, '')
 
                                 const match = text.match(/https?:\/\/\S+/)
@@ -104,7 +104,7 @@ export default defineConfig({
                             dev.stdout.on('data', onStdout)
                             dev.stderr.on('data', data => {
                                 const err = data.toString()
-                                console.error('[dev stderr]', err)
+                                // console.error('[dev stderr]', err)
                             })
                         })
                     })

@@ -18,5 +18,6 @@ export default {
     .editor-view {
         position: relative;
         overflow: hidden;
+        display: flex;
     }
 </style>
